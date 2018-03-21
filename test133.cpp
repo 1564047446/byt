@@ -7,8 +7,8 @@ int main() {
 	for (int i = 0; i < t; i++) {
 		int a, b;
 		scanf("%d%d", &a, &b);
-		sum += b;
-		sum -= a;
+		printf("a = %d, b = %d\n", a, b);
+		sum = sum + b - a;
 	}
 	printf("%d\n", sum);
 	return 0;
