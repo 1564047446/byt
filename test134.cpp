@@ -11,17 +11,19 @@ int get_mul(int x) {
 int main() {
 	int n;
 	scanf("%d", &n);
+	n = n - 1;
 	for (int i = 0; i < 10; i++) {
 		int sum = get_mul(9 - i);
 		if (sum > n) continue;
 		int j = i + 1;
 		while (n >= sum && j < 10) {
-			int t = a[i], a[i] = a[j], a[j] = t;
+			int t = arr[i];
+			arr[i] = arr[j], arr[j] = t;
 			++j, n -= sum;
 		}
 	}
 	for (int i = 0; i < 10; i++) {
-		printf("%d ", a[i]);
+		printf("%d ", arr[i]);
 	}
 	printf("\n");
 	return 0;
