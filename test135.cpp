@@ -15,10 +15,10 @@ int main() {
 	int n;
 	scanf("%d", &n);
 	while (n--) {
-		int ans = 0;
+		int ans = 1;
 		char temp[12], test[12];
-		strcpy(temp, str);
-		scanf("%s", test);
+		strcpy(test, str);
+		scanf("%s", temp);
 		for (int i = 0; i < 12; i++) {
 			if (temp[i] == test[i]) continue;
 			int j = i + 1;
