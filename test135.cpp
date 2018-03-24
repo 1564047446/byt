@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <string.h>
 
-char str[12] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'};
-
 int get_mul(int x) {
 	int sum = 1;
 	for (int i = 1; i <= x; i++) {
@@ -13,10 +11,11 @@ int get_mul(int x) {
 
 int main() {
 	int n;
+	char str[15] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l'};
 	scanf("%d", &n);
 	while (n--) {
 		int ans = 1;
-		char temp[12], test[12];
+		char temp[15], test[15];
 		strcpy(test, str);
 		scanf("%s", temp);
 		for (int i = 0; i < 12; i++) {
@@ -31,4 +30,5 @@ int main() {
 		}
 		printf("%d\n", ans);
 	}
+	return 0;
 }
