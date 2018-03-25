@@ -20,14 +20,15 @@ int main() {
         for (int j = 1; j <= arr[0]; ++j) {
             if (i * arr[j] > b) break;
             if (i % arr[j]) {
-                arr[j * i] = 1;
+                arr[arr[j] * i] = 1;
             } else {
-                arr[j * i] = 1;
+                arr[arr[j] * i] = 1;
                 break;
             }
         }
-        for (int i = 1; i <= arr[0]; i++) {
+    }
+            for (int i = 1; i <= arr[0]; i++) {
             printf("%d\n", arr[i]);
         }
-    }
+        printf("arr = %d\n", arr[0]);
 }
