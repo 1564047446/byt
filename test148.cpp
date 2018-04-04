@@ -37,7 +37,7 @@ int main() {
         }
         int start = -1, cnt = 0, end = -1;
         for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
+            for (int j = 0; j < n; j++) {
                 ++cnt;
                 if (str[i][j] == 'S') start = cnt;
                 if (str[i][j] == 'P') end = cnt;

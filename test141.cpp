@@ -1,25 +1,41 @@
+/*
+这道题和南阳那道布置会场的题差不多一样，就是布置会场需要隔一个小时才能用，而这个题不需要
+，这个题因为是电视换台，到点了直接换台就行了！ 
+*/
 #include <stdio.h>
-#include <string.h>
+#include <algorithm>
+using namespace std;
 
-int main() {
-	int a, b;
-	int cnt = 0;
-	scanf("%d%d", &a, &b);
-	if (a % 3 == 2) {
-		--a;
+struct node 
+{
+	int t1;//电视开始时间 
+	int t2;//电视的结束时间 
+}a[105]; 
+
+int cmp(node u,node v)//对节目按照结束时间从小到大排序，如果结束的时间相同，则按照开始的 
+{//时间从大到小的排序！ 
+	if(u.t2==v.t2)//为什么要将开始的时间从大到小排序呢？是因为如果结束时间相同的话，开始的 
+		return u.t1>v.t1;//越迟，看节目的时间越短，你就能尽可能的多看电视！ 
+	return u.t2<v.t2;//例如：2-3,3-4,2-4，你肯定会看2-3,3-4的两个电视，而不看2-4这个电视 
+}
+
+int main()
+{
+	int n,i,j,k,t;
+	while(scanf("%d",&n)&&n)
+	{
+		for(i=0;i<n;i++)//有n个开始和结束时间，将时间输入 
+			scanf("%d%d",&a[i].t1,&a[i].t2);
+		sort(a,a+n,cmp);//对时间进行排序 
+		for(i=1,t=a[0].t2,k=1;i<n;i++)
+		{
+			if(a[i].t1>=t) 
+			{
+				t=a[i].t2;
+				k++;
+			}
+		}
+		printf("%d\n",k); 
 	}
-	else if (a % 3 == 0) {
-		a -= 2;
-		cnt--;
-	}
-	if (b % 3 == 2) {
-		b++;
-		cnt++;
-	}
-	else if (b % 3 == 0) {
-		b -= 2;
-		cnt += 2;
-	}
-	cnt += ((b - a) / 3 * 2);
-	printf("%d\n", cnt);
+	return 0;
 }
