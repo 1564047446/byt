@@ -13,12 +13,9 @@
 using namespace std;
 
 int main() {
-    int i;
-    for (i = 0; i < 2; i++) {
-        fork();
-        cout << "-" << endl;
+    int sum = 0;
+    for (int i = 0; i <= 20000; i++) {
+        sum += i;
     }
-    wait(NULL);
-    wait(NULL);
-    return 0;
+    cout << sum << endl;
 }

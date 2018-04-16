@@ -8,7 +8,7 @@ struct test{
 	double x;
 };
 
-test q[1000000];
+test q[202000000];
 
 double cmp(test a, test b) {
 	return a.x < b.x;
