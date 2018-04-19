@@ -6,7 +6,8 @@
 using namespace std;
 
 int main() {
-	char str[10001];
+	char str[100010];
+	int up
 	scanf("%s", str);
 	int n;
 	scanf("%d", &n);
