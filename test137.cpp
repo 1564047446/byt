@@ -1,34 +1,44 @@
 #include <stdio.h>
 
-int is_par(long long x) {
-    long long temp = 0, ans = x;
-    while (x) {
-        temp = temp * 10 + x % 10;
-        x /= 10;
-    }
-    return x == ans;
-}
-int arr[2000000] = {0};
-int main() {
-    long long a, b;
-    scanf("%lld%lld", &a, &b);
-    for (int i = 2; i <= b; i++) {
-        if (arr[i] == 0) {
-            arr[i] = 1;
-            arr[++arr[0]] = i;
-        }
-        for (int j = 1; j <= arr[0]; ++j) {
-            if (i * arr[j] > b) break;
-            if (i % arr[j]) {
-                arr[arr[j] * i] = 1;
+#define  MAX 405
+float get_ans(float *f, int n) 
+{
+    int j = 0;
+    float sum = 0, factor = 1.0 / (float)n;
+    for(j = 1; j <= n; j++) {
+        if((j - 1) > (n - j)) {
+            if(f[j - 1] >= 0.0) {
+                sum = sum + f[j - 1] + 1;             
             } else {
-                arr[arr[j] * i] = 1;
-                break;
+                sum = sum + get_ans(f, j - 1) + 1 ;           
+           }
+        
+        }
+        else {
+            if(f[n-j] >= 0.0) {
+                 sum = sum + f[n - j] + 1; 
+            } else {
+                sum = sum + get_ans(f, n - j) + 1 ;     
             }
         }
+        
     }
-            for (int i = 1; i <= arr[0]; i++) {
-            printf("%d\n", arr[i]);
+    f[n] = factor * sum ;
+    return f[n];
+}
+int main()
+{
+    int t, n, j;
+    scanf("%d",&t); 
+    float f[MAX];
+    while (t--) {
+        scanf("%d",&n);        
+        for (j = 0; j <= n; j++) {
+            f[j] = -1.0;
         }
-        printf("arr = %d\n", arr[0]);
+        f[0] = 0.0;
+        f[1] = 1.0;
+        printf("%.5f\n", get_ans(f, n));     
+    }
+    return 0;
 }
