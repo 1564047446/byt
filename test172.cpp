@@ -8,7 +8,6 @@ int get_solution(int *arr, int n) {
 			sum += ((arr[j] >> i) & 1);
 
 		}
-		printf("%d\n", sum);
 		if (sum % 3 == 1) {
 			ans = ans | (1 << i);
 		}
@@ -23,6 +22,12 @@ int main() {
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++) {
 		scanf("%d", arr + i);
+	}
+	int a = 0;
+	int ones = 0, tows = 0;
+	for (int i = 0; i < n; i++) {
+		ones = (~twos) & (ones ^ arr[i]);
+		twos = (~ones) & (tows ^ arr[i]);
 	}
 	get_solution(arr, n);
 	return 0;
