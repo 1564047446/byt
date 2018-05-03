@@ -32,3 +32,21 @@ int main() {
 	get_solution(arr, n);
 	return 0;
 }
+
+int getSum(int a, int b) {
+    int p = a ^ b;
+    int q = (a & b) << 1;
+    while (q != 0) {
+        p = p ^ q;
+        q = (p & q) << 1;
+    }
+    return p | q;
+}
+
+3 + 2 
+
+a 0 1 1
+b 0 1 0
+
+0 0 1
+1 0 0
