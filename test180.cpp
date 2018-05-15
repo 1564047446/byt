@@ -43,8 +43,10 @@ RBTNode *right_rotate(RBTNode *root) {
 
 RBTNode *insert_maintain(RBTNode *root, int flag) {
     if (root->lchild->color == 0 && root->rchild->color == 0) {
-        root->rchild->color = root->lchild->color = 1;
-        root->color = 0;
+    	if (root->lchild->lchild->color == 0 || root->lchild->rchild->color == 0 || root->rchild->lchild->color == 0 || root->rchild->rchild->color == 0) {
+	        root->rchild->color = root->lchild->color = 1;
+	        root->color = 0;
+    	}
         return root;
     }
     if (flag) {
@@ -54,7 +56,7 @@ RBTNode *insert_maintain(RBTNode *root, int flag) {
             root->lchild = left_rotate(root->lchild);
         }
         root = right_rotate(root);
-        root->color = 0, root->rchild->color = 1;
+        root->color = 0, root->lchild->color = 1, root->rchild->color = 1;
     } else {
         if (root->rchild->color) return root;
         if (root->rchild->rchild->color && root->rchild->lchild->color) return root;
@@ -62,7 +64,7 @@ RBTNode *insert_maintain(RBTNode *root, int flag) {
             root->rchild = right_rotate(root->rchild);
         }
         root = left_rotate(root);
-        root->color = 0, root->lchild->color = 1;
+        root->color = 0, root->rchild->color = 1, root->lchild->color = 1;
     }
     return root;
 }
