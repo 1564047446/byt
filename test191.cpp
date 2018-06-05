@@ -12,11 +12,16 @@
 
 using namespace std;	
 
-//auto f = [] { return 42; };
 auto f = [](auto x) {
-	return [](auto y) {
-		return x + y;
-	};
+	return x;
+};
+
+int add(int x) {
+	return x;
+}
+
+auto g = [](auto x, auto y) {
+	return x + y;
 };
 
 int main() {
@@ -24,5 +29,6 @@ int main() {
 	auto b = a;
 	cout << b << endl;
 	cout << f(4) << endl;
+	cout << g(f(4), 3) << endl;
 	return 0;
 }
